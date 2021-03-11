@@ -58,7 +58,7 @@ public class Login implements Serializable {
     * @generated
     */
     @ManyToOne
-    @JoinColumn(name="user_id", nullable = false, referencedColumnName = "id", insertable=true, updatable=true)
+    @JoinColumn(name="user_id", nullable = false, referencedColumnName = "id", insertable=true, updatable=true, foreignKey = @ForeignKey(name = ""))
         
         private User user;
 

@@ -154,6 +154,13 @@ public class User implements Serializable {
         private java.lang.String picture;
 
     /**
+    * @generated
+    */
+    @Column(name = "situacao", nullable = true, unique = false, insertable=true, updatable=true)
+        
+        private java.lang.String situacao;
+
+    /**
     * Construtor
     * @generated
     */
@@ -482,6 +489,25 @@ public class User implements Serializable {
     */
     public User setPicture(java.lang.String picture){
         this.picture = picture;
+        return this;
+    }
+    /**
+    * Obtém situacao
+    * return situacao
+    * @generated
+    */
+    
+    public java.lang.String getSituacao(){
+        return this.situacao;
+    }
+
+    /**
+    * Define situacao
+    * @param situacao situacao
+    * @generated
+    */
+    public User setSituacao(java.lang.String situacao){
+        this.situacao = situacao;
         return this;
     }
 
