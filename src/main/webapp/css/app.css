@@ -1,0 +1,57 @@
+#main-view
+    {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        background-color: #EEE;
+    }
+    
+    #main-view:focus, #main-nav-bar:focus
+    {
+        outline: none;
+    }
+
+    .navbar
+    {
+        background-image: linear-gradient(to bottom, #4682B4, #B0C4DE);
+        min-height: 20px;
+        height: 30px;
+        padding: 5px 0px;
+    }
+
+    .navbar input[type="text"]
+    {
+        height: 1.3vw;
+    }
+
+    .navbar li 
+    {
+        display: inline-block;
+        color: #FFF;
+        margin: 0;
+        font-size: 1vw;
+    }
+
+    .navbar ul
+    {
+        padding-inline-start: 10px;
+        padding-inline-end: 10px;
+    }
+
+    .navbar li a, .navbar li span
+    {
+        color: #FFF;
+        font-size: 1vw;
+    } 
+
+    input[type="text"], input[type="password"], .k-dropdown-wrap
+    {
+        border: 1px solid #888;
+        border-radius: 5px;
+        height: calc(2.25rem + 2px);
+        padding-left: 5px;
+        font-size: 12px;
+        color: #888;
+    }
+
+

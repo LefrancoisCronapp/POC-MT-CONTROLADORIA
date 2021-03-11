@@ -1,0 +1,141 @@
+{
+  "baseEntity": null,
+  "blockly": null,
+  "calcFields": {},
+  "calcFieldsProperties": {},
+  "calcFieldsSecurity": {},
+  "customId": "auth",
+  "defaultValues": {
+    "accessFailedCount": null,
+    "email": null,
+    "emailConfirmed": null,
+    "id": null,
+    "lockoutEnabled": null,
+    "lockoutEnd": null,
+    "name": null,
+    "normalizedEmail": null,
+    "normalizedUserName": null,
+    "password": null,
+    "phoneNumber": null,
+    "phoneNumberConfirmed": null,
+    "securityStamp": null,
+    "twoFactorEnabled": null,
+    "userName": null
+  },
+  "defaultValuesProperties": {
+    "accessFailedCount": null,
+    "email": null,
+    "emailConfirmed": null,
+    "id": null,
+    "lockoutEnabled": null,
+    "lockoutEnd": null,
+    "name": null,
+    "normalizedEmail": null,
+    "normalizedUserName": null,
+    "password": null,
+    "phoneNumber": null,
+    "phoneNumberConfirmed": null,
+    "securityStamp": null,
+    "twoFactorEnabled": null,
+    "userName": null
+  },
+  "entityFullName": "app.entity.User",
+  "entitySimpleName": "User",
+  "errorHandles": {
+    "foreignKey": null,
+    "primaryKey": null
+  },
+  "events": {
+    "afterDelete": null,
+    "afterInsert": null,
+    "afterUpdate": null,
+    "beforeDelete": null,
+    "beforeInsert": null,
+    "beforeUpdate": null,
+    "onGetData": null,
+    "onNavigate": null
+  },
+  "query": {
+    "isEmpty": false,
+    "isRawSql": false,
+    "isValid": true,
+    "multiTenant": false,
+    "operationType": "object",
+    "pagination": false,
+    "paginatorAutomatic": false,
+    "rules": {
+      "condition": "AND",
+      "not": false,
+      "rules": [
+        {
+          "field": "u.normalizedUserName",
+          "id": "u.normalizedUserName",
+          "input": "text",
+          "operator": "equal",
+          "type": "string",
+          "value": ":login",
+          "valueIsField": false
+        }
+      ],
+      "valid": true
+    },
+    "rulesEntity": [
+      {
+        "alias": "u",
+        "entity": "User",
+        "namespace": "app.entity.User"
+      }
+    ],
+    "rulesGroupBy": [],
+    "rulesHaving": [],
+    "rulesOrderBy": [],
+    "rulesSelect": [
+      {
+        "field": "u",
+        "func": "get",
+        "type": "string"
+      }
+    ],
+    "type": "select"
+  },
+  "queryName": "{{AUTHENTICATE}}",
+  "queryParamsValues": [
+    {
+      "fieldName": "login",
+      "fieldValue": ""
+    }
+  ],
+  "security": {
+    "accessFailedCount": null,
+    "email": null,
+    "emailConfirmed": null,
+    "id": null,
+    "lockoutEnabled": null,
+    "lockoutEnd": null,
+    "name": null,
+    "normalizedEmail": null,
+    "normalizedUserName": null,
+    "password": null,
+    "phoneNumber": null,
+    "phoneNumberConfirmed": null,
+    "securityStamp": null,
+    "twoFactorEnabled": null,
+    "userName": null
+  },
+  "serviceUrl": "api/cronapi/odata/v2/app/auth/",
+  "sourceType": "entityFullName",
+  "verbs": {
+    "COUNT": true,
+    "COUNTAuthorities": null,
+    "DELETE": false,
+    "DELETEAuthorities": null,
+    "FILTER": true,
+    "FILTERAuthorities": null,
+    "GET": false,
+    "GETAuthorities": null,
+    "POST": false,
+    "POSTAuthorities": null,
+    "PUT": false,
+    "PUTAuthorities": null
+  }
+}

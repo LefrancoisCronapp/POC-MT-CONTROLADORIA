@@ -1,0 +1,105 @@
+{
+  "baseEntity": null,
+  "blockly": null,
+  "calcFields": {},
+  "calcFieldsProperties": {},
+  "calcFieldsSecurity": {},
+  "customId": "roleSecurables",
+  "defaultValues": {
+    "id": null,
+    "role": null,
+    "securable": null
+  },
+  "defaultValuesProperties": {
+    "id": null,
+    "role": null,
+    "securable": null
+  },
+  "entityFullName": "app.entity.RoleSecurable",
+  "entitySimpleName": "RoleSecurable",
+  "errorHandles": {
+    "foreignKey": null,
+    "primaryKey": null
+  },
+  "events": {
+    "afterDelete": null,
+    "afterInsert": null,
+    "afterUpdate": null,
+    "beforeDelete": null,
+    "beforeInsert": null,
+    "beforeUpdate": null,
+    "onGetData": null,
+    "onNavigate": null
+  },
+  "query": {
+    "isEmpty": false,
+    "isRawSql": false,
+    "isValid": true,
+    "multiTenant": false,
+    "operationType": "object",
+    "pagination": false,
+    "paginatorAutomatic": false,
+    "rules": {
+      "condition": "AND",
+      "not": false,
+      "rules": [
+        {
+          "field": "r.role.normalizedName",
+          "id": "r.role.normalizedName",
+          "input": "text",
+          "operator": "equal",
+          "type": "string",
+          "value": ":role",
+          "valueIsField": false
+        }
+      ],
+      "valid": true
+    },
+    "rulesEntity": [
+      {
+        "alias": "r",
+        "entity": "RoleSecurable",
+        "namespace": "app.entity.RoleSecurable"
+      }
+    ],
+    "rulesGroupBy": [],
+    "rulesHaving": [],
+    "rulesOrderBy": [],
+    "rulesSelect": [
+      {
+        "field": "r.securable",
+        "func": "get",
+        "type": "string"
+      }
+    ],
+    "type": "select"
+  },
+  "queryName": "Obter Autorizações do Papel",
+  "queryParamsValues": [
+    {
+      "fieldName": "role",
+      "fieldValue": ""
+    }
+  ],
+  "security": {
+    "id": null,
+    "role": null,
+    "securable": null
+  },
+  "serviceUrl": "api/cronapi/odata/v2/app/roleSecurables/",
+  "sourceType": "entityFullName",
+  "verbs": {
+    "COUNT": true,
+    "COUNTAuthorities": null,
+    "DELETE": false,
+    "DELETEAuthorities": null,
+    "FILTER": true,
+    "FILTERAuthorities": null,
+    "GET": false,
+    "GETAuthorities": null,
+    "POST": false,
+    "POSTAuthorities": null,
+    "PUT": false,
+    "PUTAuthorities": null
+  }
+}
