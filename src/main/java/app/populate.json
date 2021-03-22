@@ -15,6 +15,58 @@
     "lockoutEnabled": false,
     "accessFailedCount": 0
   },
+
+  {
+    "_class": "app.entity.Orgao",
+    "id": "2446125d-abeb-4d14-a630-1",
+    "nome": "Ager - Agência Estadual de Regulação dos Serviços Públicos Delegados de MT"
+  },
+  {
+    "_class": "app.entity.Orgao",
+    "id": "2446125d-abeb-4d14-a630-2",
+    "nome": "Casa Civil - Casa Civil"
+  },
+  {
+    "_class": "app.entity.Orgao",
+    "id": "2446125d-abeb-4d14-a630-3",
+    "nome": "Ceasa/MT - Cenral de Abastecimento do Estado de Mato Grosso"
+  },
+  {
+    "_class": "app.entity.Orgao",
+    "id": "2446125d-abeb-4d14-a630-4",
+    "nome": "CGE - Controladoria Geral do Estado"
+  },
+  {
+    "_class": "app.entity.Orgao",
+    "id": "2446125d-abeb-4d14-a630-5",
+    "nome": "DESENVOLVMT - DESENVOLVE MT"
+  },
+  {
+    "_class": "app.entity.Orgao",
+    "id": "2446125d-abeb-4d14-a630-6",
+    "nome": "Destran/MT - Departamento Estadual de Trânsito"
+  },
+  {
+    "_class": "app.entity.Orgao",
+    "id": "2446125d-abeb-4d14-a630-7",
+    "nome": "EMPAER - Empresa Mato-Grossense de Pesquisa, Assistência e Extensão Rural"
+  },
+  {
+    "_class": "app.entity.Orgao",
+    "id": "2446125d-abeb-4d14-a630-8",
+    "nome": "FAPEMAT - Fundação de Amparo a Pesquisa do Estado de Mato Groso"
+  },
+  {
+    "_class": "app.entity.Orgao",
+    "id": "2446125d-abeb-4d14-a630-9",
+    "nome": "FUNAC - Fundação Nova Chance"
+  },
+  {
+    "_class": "app.entity.Orgao",
+    "id": "2446125d-abeb-4d14-a630-10",
+    "nome": "GG - Gabinete do Governo"
+  },
+  
   {
     "_class": "app.entity.Role",
     "id": "2446125d-abeb-4d14-a630-422eecf18da6",

@@ -1,0 +1,121 @@
+{
+  "audit": false,
+  "baseEntity": null,
+  "blockly": null,
+  "calcFields": {},
+  "calcFieldsProperties": {},
+  "calcFieldsSecurity": {},
+  "customId": "fdImpressao",
+  "defaultValues": {
+    "ano": null,
+    "conteudo": null,
+    "data_inclusao": null,
+    "descricao": null,
+    "id": null,
+    "previsao_fim": null,
+    "previsao_inicio": null,
+    "user": null
+  },
+  "defaultValuesProperties": {
+    "ano": null,
+    "conteudo": null,
+    "data_inclusao": null,
+    "descricao": null,
+    "id": null,
+    "previsao_fim": null,
+    "previsao_inicio": null,
+    "user": null
+  },
+  "entityFullName": "app.entity.OrdemServico",
+  "entitySimpleName": "OrdemServico",
+  "errorHandles": {
+    "foreignKey": null,
+    "primaryKey": null
+  },
+  "events": {
+    "afterDelete": null,
+    "afterInsert": null,
+    "afterUpdate": null,
+    "beforeDelete": null,
+    "beforeInsert": null,
+    "beforeUpdate": null,
+    "onError": null,
+    "onNavigate": null
+  },
+  "query": {
+    "isEmpty": false,
+    "isRawSql": false,
+    "isValid": true,
+    "multiTenant": false,
+    "operationType": "object",
+    "pagination": false,
+    "paginatorAutomatic": false,
+    "rules": {
+      "condition": "AND",
+      "not": false,
+      "rules": [
+        {
+          "field": "o.id",
+          "id": "o.id",
+          "input": "text",
+          "operator": "equal",
+          "type": "string",
+          "value": ":id",
+          "valueIsField": false
+        }
+      ],
+      "valid": true
+    },
+    "rulesEntity": [
+      {
+        "alias": "o",
+        "entity": "OrdemServico",
+        "namespace": "app.entity.OrdemServico"
+      }
+    ],
+    "rulesGroupBy": [],
+    "rulesHaving": [],
+    "rulesOrderBy": [],
+    "rulesSelect": [
+      {
+        "field": "o.conteudo",
+        "func": "get",
+        "type": "string"
+      }
+    ],
+    "type": "select"
+  },
+  "queryName": "Fonte de Dados Impressao",
+  "queryParamsValues": [
+    {
+      "fieldName": "id",
+      "fieldValue": ""
+    }
+  ],
+  "security": {
+    "ano": null,
+    "conteudo": null,
+    "data_inclusao": null,
+    "descricao": null,
+    "id": null,
+    "previsao_fim": null,
+    "previsao_inicio": null,
+    "user": null
+  },
+  "serviceUrl": "api/cronapi/odata/v2/app/query674552/",
+  "sourceType": "entityFullName",
+  "verbs": {
+    "COUNT": true,
+    "COUNTAuthorities": null,
+    "DELETE": true,
+    "DELETEAuthorities": null,
+    "FILTER": true,
+    "FILTERAuthorities": null,
+    "GET": true,
+    "GETAuthorities": null,
+    "POST": true,
+    "POSTAuthorities": null,
+    "PUT": true,
+    "PUTAuthorities": null
+  }
+}

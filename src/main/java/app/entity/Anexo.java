@@ -7,6 +7,7 @@ import javax.xml.bind.annotation.*;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonFilter;
 import cronapi.rest.security.CronappSecurity;
+    import cronapi.CronapiByteHeaderSignature;
 
 
 /**
@@ -36,16 +37,10 @@ public class Anexo implements Serializable {
     /**
     * @generated
     */
-    @Column(name = "descricao", nullable = true, unique = false, insertable=true, updatable=true)
+    @Column(name = "arquivo", nullable = true, unique = false, insertable=true, updatable=true)
+    @CronapiByteHeaderSignature
         
-        private java.lang.String descricao;
-
-    /**
-    * @generated
-    */
-    @Column(name = "conteudo", nullable = true, unique = false, insertable=true, updatable=true)
-        
-        private java.lang.String conteudo;
+        private byte[] arquivo;
 
     /**
     * @generated
@@ -54,6 +49,27 @@ public class Anexo implements Serializable {
     @JoinColumn(name="fk_ordemServico", nullable = true, referencedColumnName = "id", insertable=true, updatable=true, foreignKey = @ForeignKey(name = ""))
         
         private OrdemServico ordemServico;
+
+    /**
+    * @generated
+    */
+    @Column(name = "path", nullable = true, unique = false, insertable=true, updatable=true)
+        
+        private java.lang.String path;
+
+    /**
+    * @generated
+    */
+    @Column(name = "nome_arquivo", nullable = true, unique = false, insertable=true, updatable=true)
+        
+        private java.lang.String nome_arquivo;
+
+    /**
+    * @generated
+    */
+    @Column(name = "extensao", nullable = true, unique = false, insertable=true, updatable=true)
+        
+        private java.lang.String extensao;
 
     /**
     * Construtor
@@ -82,41 +98,22 @@ public class Anexo implements Serializable {
         return this;
     }
     /**
-    * Obtém descricao
-    * return descricao
+    * Obtém arquivo
+    * return arquivo
     * @generated
     */
     
-    public java.lang.String getDescricao(){
-        return this.descricao;
+    public byte[] getArquivo(){
+        return this.arquivo;
     }
 
     /**
-    * Define descricao
-    * @param descricao descricao
+    * Define arquivo
+    * @param arquivo arquivo
     * @generated
     */
-    public Anexo setDescricao(java.lang.String descricao){
-        this.descricao = descricao;
-        return this;
-    }
-    /**
-    * Obtém conteudo
-    * return conteudo
-    * @generated
-    */
-    
-    public java.lang.String getConteudo(){
-        return this.conteudo;
-    }
-
-    /**
-    * Define conteudo
-    * @param conteudo conteudo
-    * @generated
-    */
-    public Anexo setConteudo(java.lang.String conteudo){
-        this.conteudo = conteudo;
+    public Anexo setArquivo(byte[] arquivo){
+        this.arquivo = arquivo;
         return this;
     }
     /**
@@ -136,6 +133,63 @@ public class Anexo implements Serializable {
     */
     public Anexo setOrdemServico(OrdemServico ordemServico){
         this.ordemServico = ordemServico;
+        return this;
+    }
+    /**
+    * Obtém path
+    * return path
+    * @generated
+    */
+    
+    public java.lang.String getPath(){
+        return this.path;
+    }
+
+    /**
+    * Define path
+    * @param path path
+    * @generated
+    */
+    public Anexo setPath(java.lang.String path){
+        this.path = path;
+        return this;
+    }
+    /**
+    * Obtém nome_arquivo
+    * return nome_arquivo
+    * @generated
+    */
+    
+    public java.lang.String getNome_arquivo(){
+        return this.nome_arquivo;
+    }
+
+    /**
+    * Define nome_arquivo
+    * @param nome_arquivo nome_arquivo
+    * @generated
+    */
+    public Anexo setNome_arquivo(java.lang.String nome_arquivo){
+        this.nome_arquivo = nome_arquivo;
+        return this;
+    }
+    /**
+    * Obtém extensao
+    * return extensao
+    * @generated
+    */
+    
+    public java.lang.String getExtensao(){
+        return this.extensao;
+    }
+
+    /**
+    * Define extensao
+    * @param extensao extensao
+    * @generated
+    */
+    public Anexo setExtensao(java.lang.String extensao){
+        this.extensao = extensao;
         return this;
     }
 

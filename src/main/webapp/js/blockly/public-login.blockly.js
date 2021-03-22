@@ -1,21 +1,27 @@
 window.blockly = window.blockly || {};
 window.blockly.js = window.blockly.js || {};
 window.blockly.js.blockly = window.blockly.js.blockly || {};
-window.blockly.js.blockly.MutualAuth = window.blockly.js.blockly.MutualAuth || {};
+window.blockly.js.blockly.PublicLogin = window.blockly.js.blockly.PublicLogin || {};
 
 /**
- * MutualAuth
+ * public-login
  */
-window.blockly.js.blockly.MutualAuth.login = async function(username, password, manterLogado) {
- var item;
+window.blockly.js.blockly.PublicLogin.Executar = async function() {
+
+}
+
+/**
+ * Descreva esta função...
+ */
+window.blockly.js.blockly.PublicLogin.login = async function(username, password, manterLogado) {
+
   this.cronapi.util.getURLFromOthers('POST', 'application/x-www-form-urlencoded', String(this.cronapi.util.getBaseUrl()) + String('/auth'), this.cronapi.json.createObjectFromString(['{','\"username\": \"',username,'\", \"password\": \"',password,'\"}'].join('')), null, async function(sender_item) {
       item = sender_item;
     if (this.cronapi.conversion.toBoolean(manterLogado)) {
-      this.cronapi.json.setProperty(item, 'manterLogado', true);
+      this.cronapi.util.setLocalStorage('_u', this.cronapi.object.serializeObject(item));
     } else {
-      this.cronapi.json.setProperty(item, 'manterLogado', false);
+      this.cronapi.util.setSessionStorage('_u', this.cronapi.object.serializeObject(item));
     }
-    this.cronapi.util.setLocalStorage('_u', this.cronapi.object.serializeObject(item));
     this.cronapi.screen.changeView("#/home/logged/home",[  ]);
   }.bind(this), async function(sender_item) {
       item = sender_item;
@@ -34,13 +40,6 @@ window.blockly.js.blockly.MutualAuth.login = async function(username, password, 
 /**
  * Descreva esta função...
  */
-window.blockly.js.blockly.MutualAuth.signup = async function() {
- var username, password, manterLogado, item;
-  this.cronapi.util.getURLFromOthers('POST', 'application/x-www-form-urlencoded', String(this.cronapi.util.getBaseUrl()) + String('/mutual/register'), this.cronapi.object.createObjectFromString(['{ \"token\": \"',this.cronapi.util.getUserToken(),'\" } '].join('')), null, async function(sender_item) {
-      item = sender_item;
-    this.cronapi.screen.notify('info',this.cronapi.i18n.translate("Home.view.tokenRegistered",[  ]));
-  }.bind(this), async function(sender_item) {
-      item = sender_item;
-    this.cronapi.screen.notify('error',this.cronapi.object.getProperty(item, 'responseJSON.message'));
-  }.bind(this));
+window.blockly.js.blockly.PublicLogin.iniciarPagina = async function() {
+
 }

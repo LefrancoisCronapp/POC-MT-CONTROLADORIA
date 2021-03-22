@@ -36,10 +36,9 @@ public class OrdemServico implements Serializable {
     /**
     * @generated
     */
-    @Temporal(TemporalType.DATE)
     @Column(name = "ano", nullable = true, unique = false, insertable=true, updatable=true)
         
-        private java.util.Date ano;
+        private java.lang.String ano;
 
     /**
     * @generated
@@ -119,7 +118,7 @@ public class OrdemServico implements Serializable {
     * @generated
     */
     
-    public java.util.Date getAno(){
+    public java.lang.String getAno(){
         return this.ano;
     }
 
@@ -128,7 +127,7 @@ public class OrdemServico implements Serializable {
     * @param ano ano
     * @generated
     */
-    public OrdemServico setAno(java.util.Date ano){
+    public OrdemServico setAno(java.lang.String ano){
         this.ano = ano;
         return this;
     }

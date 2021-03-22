@@ -1,0 +1,134 @@
+{
+  "audit": false,
+  "baseEntity": null,
+  "blockly": null,
+  "calcFields": {},
+  "calcFieldsProperties": {},
+  "calcFieldsSecurity": {},
+  "customId": "fdOrdemServico",
+  "defaultValues": {
+    "equipe": null,
+    "id": null,
+    "ordemServico": null,
+    "responsavel": null
+  },
+  "defaultValuesProperties": {
+    "equipe": null,
+    "id": null,
+    "ordemServico": null,
+    "responsavel": null
+  },
+  "entityFullName": "app.entity.OrdemServicoEquipe",
+  "entitySimpleName": "OrdemServicoEquipe",
+  "errorHandles": {
+    "foreignKey": null,
+    "primaryKey": null
+  },
+  "events": {
+    "afterDelete": null,
+    "afterInsert": null,
+    "afterUpdate": null,
+    "beforeDelete": null,
+    "beforeInsert": null,
+    "beforeUpdate": null,
+    "onError": null,
+    "onNavigate": null
+  },
+  "query": {
+    "isEmpty": false,
+    "isRawSql": false,
+    "isValid": true,
+    "multiTenant": false,
+    "operationType": "object",
+    "pagination": false,
+    "paginatorAutomatic": false,
+    "rules": {
+      "condition": "AND",
+      "not": false,
+      "rules": [
+        {
+          "field": "o.responsavel",
+          "id": "o.responsavel",
+          "input": "text",
+          "operator": "equal",
+          "type": "boolean",
+          "value": "true",
+          "valueIsField": false
+        }
+      ],
+      "valid": true
+    },
+    "rulesEntity": [
+      {
+        "alias": "o",
+        "entity": "OrdemServicoEquipe",
+        "namespace": "app.entity.OrdemServicoEquipe"
+      }
+    ],
+    "rulesGroupBy": [],
+    "rulesHaving": [],
+    "rulesOrderBy": [],
+    "rulesSelect": [
+      {
+        "field": "o.ordemServico.ano",
+        "func": "get",
+        "type": "string"
+      },
+      {
+        "field": "o.ordemServico.id",
+        "func": "get",
+        "type": "string"
+      },
+      {
+        "field": "o.ordemServico.descricao",
+        "func": "get",
+        "type": "string"
+      },
+      {
+        "field": "o.ordemServico.data_inclusao",
+        "func": "get",
+        "type": "date"
+      },
+      {
+        "field": "o.ordemServico.user.name",
+        "func": "get",
+        "type": "string"
+      },
+      {
+        "field": "o.equipe.nome",
+        "func": "get",
+        "type": "string"
+      },
+      {
+        "field": "o.ordemServico.id",
+        "func": "get",
+        "type": "string"
+      }
+    ],
+    "type": "select"
+  },
+  "queryName": "Fonte de Dados Ordem de Servico",
+  "queryParamsValues": [],
+  "security": {
+    "equipe": null,
+    "id": null,
+    "ordemServico": null,
+    "responsavel": null
+  },
+  "serviceUrl": "api/cronapi/odata/v2/app/query780700/",
+  "sourceType": "entityFullName",
+  "verbs": {
+    "COUNT": true,
+    "COUNTAuthorities": null,
+    "DELETE": true,
+    "DELETEAuthorities": null,
+    "FILTER": true,
+    "FILTERAuthorities": null,
+    "GET": true,
+    "GETAuthorities": null,
+    "POST": true,
+    "POSTAuthorities": null,
+    "PUT": true,
+    "PUTAuthorities": null
+  }
+}

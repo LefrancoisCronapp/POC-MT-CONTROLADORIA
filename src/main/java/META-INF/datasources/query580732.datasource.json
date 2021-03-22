@@ -1,0 +1,99 @@
+{
+  "audit": false,
+  "baseEntity": null,
+  "blockly": null,
+  "calcFields": {},
+  "calcFieldsProperties": {},
+  "calcFieldsSecurity": {},
+  "customId": "ORGAOS",
+  "defaultValues": {
+    "id": null,
+    "nome": null
+  },
+  "defaultValuesProperties": {
+    "id": null,
+    "nome": null
+  },
+  "entityFullName": "app.entity.Orgao",
+  "entitySimpleName": "Orgao",
+  "errorHandles": {
+    "foreignKey": null,
+    "primaryKey": null
+  },
+  "events": {
+    "afterDelete": null,
+    "afterInsert": null,
+    "afterUpdate": null,
+    "beforeDelete": null,
+    "beforeInsert": null,
+    "beforeUpdate": null,
+    "onError": null,
+    "onNavigate": null
+  },
+  "query": {
+    "isEmpty": false,
+    "isRawSql": false,
+    "isValid": true,
+    "multiTenant": false,
+    "operationType": "object",
+    "pagination": false,
+    "paginatorAutomatic": false,
+    "rules": {
+      "condition": "AND",
+      "not": false,
+      "rules": [],
+      "valid": true
+    },
+    "rulesEntity": [
+      {
+        "alias": "o",
+        "entity": "Orgao",
+        "namespace": "app.entity.Orgao"
+      }
+    ],
+    "rulesGroupBy": [],
+    "rulesHaving": [],
+    "rulesOrderBy": [],
+    "rulesSelect": [
+      {
+        "field": "o.id",
+        "func": "get",
+        "type": "string"
+      },
+      {
+        "field": "o.nome",
+        "func": "get",
+        "type": "string"
+      }
+    ],
+    "type": "select"
+  },
+  "queryName": "Fonte de Dados Orgaos",
+  "queryParamsValues": [],
+  "security": {
+    "id": {
+      "get": "Public"
+    },
+    "nome": {
+      "get": "Public"
+    }
+  },
+  "serviceUrl": "api/cronapi/odata/v2/app/query580732/",
+  "sourceType": "entityFullName",
+  "verbs": {
+    "COUNT": true,
+    "COUNTAuthorities": null,
+    "DELETE": true,
+    "DELETEAuthorities": null,
+    "FILTER": true,
+    "FILTERAuthorities": null,
+    "GET": true,
+    "GETAuthorities": [
+      "Public"
+    ],
+    "POST": true,
+    "POSTAuthorities": null,
+    "PUT": true,
+    "PUTAuthorities": null
+  }
+}

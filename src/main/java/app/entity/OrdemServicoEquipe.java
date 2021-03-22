@@ -50,6 +50,13 @@ public class OrdemServicoEquipe implements Serializable {
         private OrdemServico ordemServico;
 
     /**
+    * @generated
+    */
+    @Column(name = "responsavel", nullable = true, unique = false, insertable=true, updatable=true)
+        
+        private java.lang.Boolean responsavel;
+
+    /**
     * Construtor
     * @generated
     */
@@ -111,6 +118,25 @@ public class OrdemServicoEquipe implements Serializable {
     */
     public OrdemServicoEquipe setOrdemServico(OrdemServico ordemServico){
         this.ordemServico = ordemServico;
+        return this;
+    }
+    /**
+    * Obtém responsavel
+    * return responsavel
+    * @generated
+    */
+    
+    public java.lang.Boolean getResponsavel(){
+        return this.responsavel;
+    }
+
+    /**
+    * Define responsavel
+    * @param responsavel responsavel
+    * @generated
+    */
+    public OrdemServicoEquipe setResponsavel(java.lang.Boolean responsavel){
+        this.responsavel = responsavel;
         return this;
     }
 

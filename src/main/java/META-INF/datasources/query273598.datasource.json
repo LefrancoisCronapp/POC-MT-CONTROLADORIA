@@ -1,0 +1,101 @@
+{
+  "audit": false,
+  "baseEntity": null,
+  "blockly": null,
+  "calcFields": {},
+  "calcFieldsProperties": {},
+  "calcFieldsSecurity": {},
+  "customId": "EQUIPES",
+  "defaultValues": {
+    "coordenador": null,
+    "id": null,
+    "nome": null
+  },
+  "defaultValuesProperties": {
+    "coordenador": null,
+    "id": null,
+    "nome": null
+  },
+  "entityFullName": "app.entity.Equipe",
+  "entitySimpleName": "Equipe",
+  "errorHandles": {
+    "foreignKey": null,
+    "primaryKey": null
+  },
+  "events": {
+    "afterDelete": null,
+    "afterInsert": null,
+    "afterUpdate": null,
+    "beforeDelete": null,
+    "beforeInsert": null,
+    "beforeUpdate": null,
+    "onError": null,
+    "onNavigate": null
+  },
+  "query": {
+    "isEmpty": false,
+    "isRawSql": false,
+    "isValid": true,
+    "multiTenant": false,
+    "operationType": "object",
+    "pagination": false,
+    "paginatorAutomatic": false,
+    "rules": {
+      "condition": "AND",
+      "not": false,
+      "rules": [],
+      "valid": true
+    },
+    "rulesEntity": [
+      {
+        "alias": "e",
+        "entity": "Equipe",
+        "namespace": "app.entity.Equipe"
+      }
+    ],
+    "rulesGroupBy": [],
+    "rulesHaving": [],
+    "rulesOrderBy": [],
+    "rulesSelect": [
+      {
+        "field": "e.nome",
+        "func": "get",
+        "type": "string"
+      },
+      {
+        "field": "e.coordenador.name",
+        "func": "get",
+        "type": "string"
+      },
+      {
+        "field": "e.id",
+        "func": "get",
+        "type": "string"
+      }
+    ],
+    "type": "select"
+  },
+  "queryName": "Fonte de Dados Equipes",
+  "queryParamsValues": [],
+  "security": {
+    "coordenador": null,
+    "id": null,
+    "nome": null
+  },
+  "serviceUrl": "api/cronapi/odata/v2/app/query273598/",
+  "sourceType": "entityFullName",
+  "verbs": {
+    "COUNT": true,
+    "COUNTAuthorities": null,
+    "DELETE": true,
+    "DELETEAuthorities": null,
+    "FILTER": true,
+    "FILTERAuthorities": null,
+    "GET": true,
+    "GETAuthorities": null,
+    "POST": true,
+    "POSTAuthorities": null,
+    "PUT": true,
+    "PUTAuthorities": null
+  }
+}
