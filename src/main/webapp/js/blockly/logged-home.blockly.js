@@ -8,51 +8,79 @@ window.blockly.js.blockly.LoggedHome = window.blockly.js.blockly.LoggedHome || {
  */
 window.blockly.js.blockly.LoggedHome.validarArgs = [];
 window.blockly.js.blockly.LoggedHome.validar = async function() {
- var os;
-  ret = true;
+ var item;
+  valida_dados = true;
+  validar_orgaos = true;
+  valida_equipes = true;
   if (this.cronapi.logic.isNullOrEmpty(this.cronapi.screen.getValueOfField("vars.ano"))) {
     this.cronapi.screen.changeContent("tab_dados", '<i class=\"glyphicon glyphicon-alert\"></i> Dados da O.S.', 'false');
     this.cronapi.screen.changeContent("label_ano", 'Ano <i data-toggle=\"tooltip\" data-placement=\"right\" title=\"O ano não pode ser vazio.\" class=\"fa fa-exclamation\"></i>\n', 'false');
-    ret = false;
-  } else {
-    if (this.cronapi.screen.getValueOfField("vars.ano") > 2021 || this.cronapi.screen.getValueOfField("vars.ano") < 2016) {
-      this.cronapi.screen.changeContent("tab_dados", '<i class=\"glyphicon glyphicon-alert\"></i> Dados da O.S.', 'false');
-      this.cronapi.screen.changeContent("label_ano", 'Ano <i data-toggle=\"tooltip\" data-placement=\"right\" title=\"O ano deve compreender o período de 2016 a 2021.\" class=\"fa fa-exclamation\"></i>\n', 'false');
-      ret = false;
-    }
-  }
-  if (this.cronapi.dateTime.getDaysBetweenDates(this.cronapi.conversion.stringToDate(this.cronapi.screen.getValueOfField("vars.termino")), this.cronapi.conversion.stringToDate(this.cronapi.screen.getValueOfField("vars.inicio"))) < 0) {
+    valida_dados = false;
+  } else if (this.cronapi.screen.getValueOfField("vars.ano") > 2021 || this.cronapi.screen.getValueOfField("vars.ano") < 2016) {
     this.cronapi.screen.changeContent("tab_dados", '<i class=\"glyphicon glyphicon-alert\"></i> Dados da O.S.', 'false');
-    this.cronapi.screen.changeContent("label_dataTermino", 'Previsão Término <i data-toggle=\"tooltip\" data-placement=\"right\" title=\"A data de término não pode ser anterior a data de início.\" class=\"fa fa-exclamation\"></i>\n', 'false');
-    ret = false;
+    this.cronapi.screen.changeContent("label_ano", 'Ano <i data-toggle=\"tooltip\" data-placement=\"right\" title=\"O ano deve compreender o período de 2016 a 2021.\" class=\"fa fa-exclamation\"></i>\n', 'false');
+    valida_dados = false;
+  } else {
+    this.cronapi.screen.changeContent("label_ano", 'Ano\n', 'false');
   }
   if (this.cronapi.logic.isNullOrEmpty(this.cronapi.screen.getValueOfField("vars.descricao"))) {
     this.cronapi.screen.changeContent("tab_dados", '<i class=\"glyphicon glyphicon-alert\"></i> Dados da O.S.', 'false');
     this.cronapi.screen.changeContent("label_descricao", 'Descrição <i data-toggle=\"tooltip\" data-placement=\"right\" title=\"A descrição não pode ser vazia.\" class=\"fa fa-exclamation\"></i>\n', 'false');
-    ret = false;
+    valida_dados = false;
+  } else {
+    this.cronapi.screen.changeContent("label_descricao", 'Descrição\n', 'false');
   }
-  if (this.cronapi.logic.isNullOrEmpty(this.cronapi.screen.getValueOfField("vars.conteudo"))) {
+  if (this.cronapi.logic.isNullOrEmpty(this.cronapi.screen.getValueOfField("vars.inicio"))) {
     this.cronapi.screen.changeContent("tab_dados", '<i class=\"glyphicon glyphicon-alert\"></i> Dados da O.S.', 'false');
-    this.cronapi.screen.changeContent("label_conteudo", 'Conteúdo <i data-toggle=\"tooltip\" data-placement=\"right\" title=\"O conteúdo não pode ser vazio.\" class=\"fa fa-exclamation\"></i>\n', 'false');
-    ret = false;
+    this.cronapi.screen.changeContent("label_inicio", 'Previsão Início <i data-toggle=\"tooltip\" data-placement=\"right\" title=\"A data de início não pode ser nula.\" class=\"fa fa-exclamation\"></i>\n', 'false');
+    valida_dados = false;
+  } else {
+    this.cronapi.screen.changeContent("label_inicio", 'Previsão Início\n', 'false');
+  }
+  if (this.cronapi.logic.isNullOrEmpty(this.cronapi.screen.getValueOfField("vars.termino"))) {
+    this.cronapi.screen.changeContent("tab_dados", '<i class=\"glyphicon glyphicon-alert\"></i> Dados da O.S.', 'false');
+    this.cronapi.screen.changeContent("label_dataTermino", 'Previsão Término <i data-toggle=\"tooltip\" data-placement=\"right\" title=\"A data de término não pode ser nula.\" class=\"fa fa-exclamation\"></i>\n', 'false');
+    valida_dados = false;
+  } else if (this.cronapi.dateTime.getDaysBetweenDates(this.cronapi.conversion.stringToDate(this.cronapi.screen.getValueOfField("vars.termino")), this.cronapi.conversion.stringToDate(this.cronapi.screen.getValueOfField("vars.inicio"))) < 0) {
+    this.cronapi.screen.changeContent("tab_dados", '<i class=\"glyphicon glyphicon-alert\"></i> Dados da O.S.', 'false');
+    this.cronapi.screen.changeContent("label_dataTermino", 'Previsão Término <i data-toggle=\"tooltip\" data-placement=\"right\" title=\"A data de término não pode ser anterior a data de início.\" class=\"fa fa-exclamation\"></i>\n', 'false');
+    valida_dados = false;
+  } else {
+    this.cronapi.screen.changeContent("label_dataTermino", 'Previsão Término\n', 'false');
+  }
+  if (valida_dados) {
+    this.cronapi.screen.changeContent("tab_dados", 'Dados da O.S.', 'false');
+  } else {
+    this.cronapi.screen.changeContent("tab_dados", '<i class=\"glyphicon glyphicon-alert\"></i> Dados da O.S.', 'false');
   }
   if (this.cronapi.json.getProperty(this.cronapi.screen.getScopeVariable("ordem_servico"), 'orgaos_selecionados').length == 0) {
     this.cronapi.screen.changeContent("tab_orgaos", '<i class=\"glyphicon glyphicon-alert\"></i> Orgãos.', 'false');
     this.cronapi.screen.changeContent("label_orgaos", 'Orgão <i data-toggle=\"tooltip\" data-placement=\"right\" title=\"Vincule pelo menos um orgão a uma Ordem de Serviço.\" class=\"fa fa-exclamation\"></i>\n', 'false');
-    ret = false;
+    validar_orgaos = false;
+  } else {
+    this.cronapi.screen.changeContent("tab_orgaos", 'Orgãos.', 'false');
+    this.cronapi.screen.changeContent("label_orgaos", 'Orgão\n', 'false');
   }
   if (this.cronapi.json.getProperty(this.cronapi.screen.getScopeVariable("ordem_servico"), 'equipes_selecionadas').length == 0) {
     this.cronapi.screen.changeContent("tab_equipes", '<i class=\"glyphicon glyphicon-alert\"></i> Equipes.', 'false');
     this.cronapi.screen.changeContent("label_equipes", 'Equipes Escolhidas <i data-toggle=\"tooltip\" data-placement=\"right\" title=\"Vincule pelo menos uma equipe a uma Ordem de Serviço.\" class=\"fa fa-exclamation\"></i>\n', 'false');
-    ret = false;
+    valida_equipes = false;
   } else {
-    if (this.cronapi.logic.isNullOrEmpty(this.cronapi.json.getProperty(this.cronapi.screen.getScopeVariable("ordem_servico"), 'equipe_responsavel'))) {
-      this.cronapi.screen.changeContent("tab_equipes", '<i class=\"glyphicon glyphicon-alert\"></i> Equipes.', 'false');
-      this.cronapi.screen.changeContent("label_responsavel", 'Responsável <i data-toggle=\"tooltip\" data-placement=\"right\" title=\"É necessário escolher a equipe responsável pela Ordem de Serviço.\" class=\"fa fa-exclamation\"></i>\n', 'false');
-      ret = false;
-    }
+    this.cronapi.screen.changeContent("label_equipes", 'Equipes Escolhidas\n', 'false');
   }
-  return ret;
+  if (this.cronapi.logic.isNullOrEmpty(this.cronapi.json.getProperty(this.cronapi.screen.getScopeVariable("ordem_servico"), 'equipe_responsavel'))) {
+    this.cronapi.screen.changeContent("tab_equipes", '<i class=\"glyphicon glyphicon-alert\"></i> Equipes.', 'false');
+    this.cronapi.screen.changeContent("label_responsavel", 'Responsável <i data-toggle=\"tooltip\" data-placement=\"right\" title=\"É necessário escolher a equipe responsável pela Ordem de Serviço.\" class=\"fa fa-exclamation\"></i>\n', 'false');
+    valida_equipes = false;
+  } else {
+    this.cronapi.screen.changeContent("label_responsavel", 'Responsável', 'false');
+  }
+  if (valida_equipes) {
+    this.cronapi.screen.changeContent("tab_equipes", 'Equipes.', 'false');
+  } else {
+    this.cronapi.screen.changeContent("tab_equipes", '<i class=\"glyphicon glyphicon-alert\"></i> Equipes.', 'false');
+  }
+  return valida_dados && validar_orgaos && valida_equipes;
 }
 
 /**
@@ -60,36 +88,41 @@ window.blockly.js.blockly.LoggedHome.validar = async function() {
  */
 window.blockly.js.blockly.LoggedHome.iniciarPaginaArgs = [];
 window.blockly.js.blockly.LoggedHome.iniciarPagina = async function() {
- var os;
+ var item;
   this.cronapi.screen.createScopeVariable('orgaos_selecionados', '');
   this.cronapi.screen.changeValueOfField('orgaos_selecionados', []);
   this.cronapi.screen.createScopeVariable('ordem_servico', this.cronapi.json.createObjectFromString(['{','\"id\": \"\", ','\"ano\": \"\", ','\"descricao\": \"\", ','\"data_inicio\": \"\", ','\"data_termino\": \"\", ','\"conteudo\": \"\", ','\"orgaos_selecionados\":  [], ','\"equipes_selecionadas\": [], ','\"equipe_responsavel\": \"\", ','\"anexos\": []','}'].join('')));
   this.cronapi.screen.changeValueOfField("vars.rb_tipo_conteudo", '1');
-  this.cronapi.util.callServerBlocklyAsynchronous('blockly.OrdemServico:teste', async function(sender_item) {
-      item = sender_item;
-    this.cronapi.screen.changeAttrValue("editor_api", 'src', this.cronapi.json.getProperty(item, 'document_url'));
-    this.cronapi.screen.changeAttrValue("link_editor_api", 'href', this.cronapi.json.getProperty(item, 'document_url'));
-    this.cronapi.screen.createScopeVariable('document_url', '');
-    this.cronapi.screen.changeValueOfField('document_url', this.cronapi.json.getProperty(item, 'document_url'));
-  }.bind(this));
+  this.cronapi.screen.changeValueOfField("vars.busca_ano_final", '2021');
+  this.cronapi.screen.changeValueOfField("vars.busca_situacao_final", 'ativo');
 }
 
 /**
  * Descreva esta função...
  */
-window.blockly.js.blockly.LoggedHome.cadastrarOrdemServicoArgs = [];
-window.blockly.js.blockly.LoggedHome.cadastrarOrdemServico = async function() {
- var os;
-  if (await this.blockly.js.blockly.LoggedHome.validar()) {
-    resp = await this.cronapi.util.callServerBlockly('blockly.OrdemServico:cadastrarOrdemServico', this.cronapi.screen.getScopeVariable("ordem_servico"));
-    if (resp) {
-      this.cronapi.screen.notify('success','<i class=\"glyphicon glyphicon-ok-sign\"></i> Ordem de Serviço Cadastrada com sucesso!');
-      await this.cronapi.util.sleep(500);
-      this.cronapi.screen.changeView("#/home/logged/home",[  ]);
-    } else {
-      this.cronapi.screen.notify('error','<i class=\"glyphicon glyphicon-alert\"></i> Não foi possível cadastrar a Ordem de Serviço!');
-    }
-  }
+window.blockly.js.blockly.LoggedHome.abrirPainelFiltrosArgs = [];
+window.blockly.js.blockly.LoggedHome.abrirPainelFiltros = async function() {
+ var item;
+  this.cronapi.screen.hideComponent("open-icon");
+  this.cronapi.screen.showComponent("dynamic-frame");
+  this.cronapi.screen.showComponent("close-icon");
+  this.cronapi.screen.showComponent("frame-action");
+  this.cronapi.screen.showComponent("frame-info");
+  this.cronapi.screen.changeAttrValue("close-icon", 'style', 'display: inline-block !important');
+}
+
+/**
+ * Descreva esta função...
+ */
+window.blockly.js.blockly.LoggedHome.fecharPainelFiltrosArgs = [];
+window.blockly.js.blockly.LoggedHome.fecharPainelFiltros = async function() {
+ var item;
+  this.cronapi.screen.hideComponent("close-icon");
+  this.cronapi.screen.hideComponent("dynamic-frame");
+  this.cronapi.screen.hideComponent("frame-action");
+  this.cronapi.screen.hideComponent("frame-info");
+  this.cronapi.screen.showComponent("open-icon");
+  this.cronapi.screen.changeAttrValue("open-icon", 'style', 'display: inline-block !important');
 }
 
 /**
@@ -163,7 +196,6 @@ window.blockly.js.blockly.LoggedHome.alterarValorOS = async function(key, value)
         equipe_inc = -equipe_inc;
       }
       for (equipe = 1; equipe_inc >= 0 ? equipe <= equipe_end : equipe >= equipe_end; equipe += equipe_inc) {
-        console.log(lista_equipes[(equipe - 1)]);
         if (this.cronapi.json.getProperty(lista_equipes[(equipe - 1)], 'id') == this.cronapi.json.getProperty(value, 'id')) {
           lista_equipes.splice((equipe - 1), 1);
           flag = true;
@@ -192,38 +224,19 @@ window.blockly.js.blockly.LoggedHome.alterarValorOS = async function(key, value)
 /**
  * Descreva esta função...
  */
-window.blockly.js.blockly.LoggedHome.carregarTotalPesquisadasArgs = [];
-window.blockly.js.blockly.LoggedHome.carregarTotalPesquisadas = async function() {
- var os;
-  console.log(this.cronapi.screen.quantityRecords("GerenciadorDeUsuarios"));
-}
-
-/**
- * Descreva esta função...
- */
-window.blockly.js.blockly.LoggedHome.abrirPainelFiltrosArgs = [];
-window.blockly.js.blockly.LoggedHome.abrirPainelFiltros = async function() {
- var os;
-  this.cronapi.screen.hideComponent("open-icon");
-  this.cronapi.screen.showComponent("dynamic-frame");
-  this.cronapi.screen.showComponent("close-icon");
-  this.cronapi.screen.showComponent("frame-action");
-  this.cronapi.screen.showComponent("frame-info");
-  this.cronapi.screen.changeAttrValue("close-icon", 'style', 'display: inline-block !important');
-}
-
-/**
- * Descreva esta função...
- */
-window.blockly.js.blockly.LoggedHome.fecharPainelFiltrosArgs = [];
-window.blockly.js.blockly.LoggedHome.fecharPainelFiltros = async function() {
- var os;
-  this.cronapi.screen.hideComponent("close-icon");
-  this.cronapi.screen.hideComponent("dynamic-frame");
-  this.cronapi.screen.hideComponent("frame-action");
-  this.cronapi.screen.hideComponent("frame-info");
-  this.cronapi.screen.showComponent("open-icon");
-  this.cronapi.screen.changeAttrValue("open-icon", 'style', 'display: inline-block !important');
+window.blockly.js.blockly.LoggedHome.cadastrarOrdemServicoArgs = [];
+window.blockly.js.blockly.LoggedHome.cadastrarOrdemServico = async function() {
+ var item;
+  if (await this.blockly.js.blockly.LoggedHome.validar()) {
+    resp = await this.cronapi.util.callServerBlockly('blockly.OrdemServico:cadastrarOrdemServico', this.cronapi.screen.getScopeVariable("ordem_servico"));
+    if (resp) {
+      this.cronapi.screen.notify('success','<i class=\"glyphicon glyphicon-ok-sign\"></i> Ordem de Serviço Cadastrada com sucesso!');
+      await this.cronapi.util.sleep(500);
+      this.cronapi.screen.changeView("#/home/logged/home",[  ]);
+    } else {
+      this.cronapi.screen.notify('error','<i class=\"glyphicon glyphicon-alert\"></i> Não foi possível cadastrar a Ordem de Serviço!');
+    }
+  }
 }
 
 /**
@@ -231,7 +244,7 @@ window.blockly.js.blockly.LoggedHome.fecharPainelFiltros = async function() {
  */
 window.blockly.js.blockly.LoggedHome.filtrarOrdemServicosArgs = [];
 window.blockly.js.blockly.LoggedHome.filtrarOrdemServicos = async function() {
- var os;
+ var item;
   this.cronapi.screen.changeValueOfField("vars.busca_ano_final", this.cronapi.screen.getValueOfField("vars.busca_ano"));
   this.cronapi.screen.changeValueOfField("vars.busca_equipe_final", this.cronapi.screen.getValueOfField("vars.busca_equipe"));
   this.cronapi.screen.changeValueOfField("vars.busca_numeroOs_final", this.cronapi.screen.getValueOfField("vars.busca_numeroOS"));
@@ -243,15 +256,30 @@ window.blockly.js.blockly.LoggedHome.filtrarOrdemServicos = async function() {
  */
 window.blockly.js.blockly.LoggedHome.limparFiltrosArgs = [];
 window.blockly.js.blockly.LoggedHome.limparFiltros = async function() {
- var os;
+ var item;
   this.cronapi.screen.changeValueOfField("vars.busca_ano", '');
-  this.cronapi.screen.changeValueOfField("vars.busca_ano_final", '');
+  this.cronapi.screen.changeValueOfField("vars.busca_ano_final", '2021');
   this.cronapi.screen.changeValueOfField("vars.busca_equipe", '');
   this.cronapi.screen.changeValueOfField("vars.busca_equipe_final", '');
   this.cronapi.screen.changeValueOfField("vars.busca_numeroOS", '');
   this.cronapi.screen.changeValueOfField("vars.busca_numeroOs_final", '');
   this.cronapi.screen.changeValueOfField("vars.busca_situacao", '');
-  this.cronapi.screen.changeValueOfField("vars.busca_situacao_final", '');
+  this.cronapi.screen.changeValueOfField("vars.busca_situacao_final", 'ativo');
+}
+
+/**
+ * Descreva esta função...
+ */
+window.blockly.js.blockly.LoggedHome.abrirModalImpressaoArgs = [];
+window.blockly.js.blockly.LoggedHome.abrirModalImpressao = async function() {
+ var item;
+  os = await this.cronapi.util.callServerBlockly('blockly.OrdemServico:recuperarOrdemServicoById', this.cronapi.screen.getValueOfField("GerenciadorDeUsuarios.active.ordemServico_id"));
+  if (this.cronapi.json.getProperty(os, 'conteudo').indexOf('<!DOCTYPE html>') + 1 > 0) {
+    this.cronapi.screen.changeValueOfField("vars.conteudo_impressao", this.cronapi.json.getProperty(os, 'conteudo'));
+    this.cronapi.screen.showModal("modalImpressao");
+  } else {
+    this.cronapi.screen.openUrl(this.cronapi.json.getProperty(os, 'conteudo'), true, 0, 0);
+  }
 }
 
 /**
@@ -259,7 +287,7 @@ window.blockly.js.blockly.LoggedHome.limparFiltros = async function() {
  */
 window.blockly.js.blockly.LoggedHome.abrirModalVisualizarOSArgs = [];
 window.blockly.js.blockly.LoggedHome.abrirModalVisualizarOS = async function() {
- var os;
+ var item;
   os = await this.cronapi.util.callServerBlockly('blockly.OrdemServico:recuperarOrdemServicoById', this.cronapi.screen.getValueOfField("GerenciadorDeUsuarios.active.ordemServico_id"));
   this.cronapi.screen.changeContent("info-ano", String('<b>Ano: </b>') + String(this.cronapi.json.getProperty(os, 'ano')), 'false');
   this.cronapi.screen.changeContent("info-idOS", String('<b>Número O.S.: </b>') + String(this.cronapi.json.getProperty(os, 'id')), 'false');
@@ -280,29 +308,6 @@ window.blockly.js.blockly.LoggedHome.abrirModalVisualizarOS = async function() {
   }
   this.cronapi.screen.changeContent("info-listaEquipes", ['<b>Equipes Relacionadas: </b>','<ul>',lista_equipes.join(''),'</ul>'].join(''), 'false');
   this.cronapi.screen.showModal("modalVisualizarOS");
-}
-
-/**
- * Descreva esta função...
- */
-window.blockly.js.blockly.LoggedHome.testeArgs = [];
-window.blockly.js.blockly.LoggedHome.teste = async function() {
- var os;
-}
-
-/**
- * Descreva esta função...
- */
-window.blockly.js.blockly.LoggedHome.abrirModalImpressaoArgs = [];
-window.blockly.js.blockly.LoggedHome.abrirModalImpressao = async function() {
- var os;
-  os = await this.cronapi.util.callServerBlockly('blockly.OrdemServico:recuperarOrdemServicoById', this.cronapi.screen.getValueOfField("GerenciadorDeUsuarios.active.ordemServico_id"));
-  if (this.cronapi.json.getProperty(os, 'conteudo').indexOf('<!DOCTYPE html>') + 1 > 0) {
-    this.cronapi.screen.changeValueOfField("vars.conteudo_impressao", this.cronapi.json.getProperty(os, 'conteudo'));
-    this.cronapi.screen.showModal("modalImpressao");
-  } else {
-    this.cronapi.screen.openUrl(this.cronapi.json.getProperty(os, 'conteudo'), true, 0, 0);
-  }
 }
 
 /**
