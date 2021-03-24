@@ -6,15 +6,17 @@ window.blockly.js.blockly.PublicLogin = window.blockly.js.blockly.PublicLogin ||
 /**
  * public-login
  */
+window.blockly.js.blockly.PublicLogin.ExecutarArgs = [];
 window.blockly.js.blockly.PublicLogin.Executar = async function() {
-
+ var username, password, manterLogado, item;
 }
 
 /**
  * Descreva esta função...
  */
+window.blockly.js.blockly.PublicLogin.loginArgs = ['username', 'password', 'manterLogado'];
 window.blockly.js.blockly.PublicLogin.login = async function(username, password, manterLogado) {
-
+ var item;
   this.cronapi.util.getURLFromOthers('POST', 'application/x-www-form-urlencoded', String(this.cronapi.util.getBaseUrl()) + String('/auth'), this.cronapi.json.createObjectFromString(['{','\"username\": \"',username,'\", \"password\": \"',password,'\"}'].join('')), null, async function(sender_item) {
       item = sender_item;
     if (this.cronapi.conversion.toBoolean(manterLogado)) {
@@ -40,6 +42,7 @@ window.blockly.js.blockly.PublicLogin.login = async function(username, password,
 /**
  * Descreva esta função...
  */
+window.blockly.js.blockly.PublicLogin.iniciarPaginaArgs = [];
 window.blockly.js.blockly.PublicLogin.iniciarPagina = async function() {
-
+ var username, password, manterLogado, item;
 }

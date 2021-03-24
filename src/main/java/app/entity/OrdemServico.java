@@ -87,6 +87,13 @@ public class OrdemServico implements Serializable {
         private User user;
 
     /**
+    * @generated
+    */
+    @Column(name = "situacao", nullable = true, unique = false, insertable=true, updatable=true)
+        
+        private java.lang.String situacao;
+
+    /**
     * Construtor
     * @generated
     */
@@ -243,6 +250,25 @@ public class OrdemServico implements Serializable {
     */
     public OrdemServico setUser(User user){
         this.user = user;
+        return this;
+    }
+    /**
+    * Obtém situacao
+    * return situacao
+    * @generated
+    */
+    
+    public java.lang.String getSituacao(){
+        return this.situacao;
+    }
+
+    /**
+    * Define situacao
+    * @param situacao situacao
+    * @generated
+    */
+    public OrdemServico setSituacao(java.lang.String situacao){
+        this.situacao = situacao;
         return this;
     }
 

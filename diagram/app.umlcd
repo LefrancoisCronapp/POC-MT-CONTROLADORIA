@@ -1557,25 +1557,26 @@
         "data_inclusao:java.util.Date",
         "conteudo:java.lang.String",
         "descricao:java.lang.String",
-        "user:User"
+        "user:User",
+        "situacao:java.lang.String"
       ],
       "attrs": {
         ".uml-class-attrs-rect": {
-          "height": 190,
+          "height": 210,
           "transform": "translate(0,50)"
         },
         ".uml-class-attrs-text": {
           "font-size": 11,
-          "text": "id\nano\nprevisao_inicio\nprevisao_fim\ndata_inclusao\nconteudo\ndescricao\nuser\n"
+          "text": "id\nano\nprevisao_inicio\nprevisao_fim\ndata_inclusao\nconteudo\ndescricao\nuser\nsituacao\n"
         },
         ".uml-class-attrs-value": {
           "font-size": 11,
           "ref-x": 106.90625,
-          "text": "Texto\nTexto\nData\nData\nData\nTexto\nTexto\nUser\n"
+          "text": "Texto\nTexto\nData\nData\nData\nTexto\nTexto\nUser\nTexto\n"
         },
         ".uml-class-methods-rect": {
           "height": 30,
-          "transform": "translate(0,240)"
+          "transform": "translate(0,260)"
         },
         ".uml-class-methods-text": {
           "fill": "#0066FF",
@@ -1846,6 +1847,37 @@
           "storageType": "",
           "storageSecret": "",
           "foreignKeyName": ""
+        },
+        {
+          "name": "situacao",
+          "type": "java.lang.String",
+          "dbName": "situacao",
+          "dbLength": "",
+          "dbPrecision": "",
+          "dbScale": "",
+          "dbDefaultValue": "",
+          "label": "Situacao",
+          "mask": "",
+          "isPrimaryKey": false,
+          "isUniqueKey": false,
+          "isNullable": true,
+          "pkType": "",
+          "multitenantContext": "",
+          "jsonIgnore": false,
+          "isTransient": false,
+          "isInsertable": true,
+          "isUpdatable": true,
+          "isEncryption": false,
+          "referencedColumnName": "",
+          "isSearchable": false,
+          "sequence": "",
+          "isCascade": false,
+          "isVersion": false,
+          "storageId": "",
+          "storageKey": "",
+          "storageType": "",
+          "storageSecret": "",
+          "foreignKeyName": ""
         }
       ],
       "generateView": "Auto",
@@ -1864,7 +1896,7 @@
       "role": "Auto",
       "runtimeClass": "cronos.widgets.joint.uml.Class",
       "size": {
-        "height": 173.7774887084961,
+        "height": 184.713623046875,
         "width": 151.59375
       },
       "tableName": "",

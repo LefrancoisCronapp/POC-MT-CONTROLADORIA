@@ -23,13 +23,16 @@ public static Var cadastrarOrdemServico(@ParamMetaData(description = "json_os") 
  return new Callable<Var>() {
 
    private Var erro = Var.VAR_NULL;
+   private Var ret = Var.VAR_NULL;
    private Var id_os = Var.VAR_NULL;
    private Var orgao = Var.VAR_NULL;
    private Var equipe = Var.VAR_NULL;
    private Var anexo = Var.VAR_NULL;
-   private Var ret = Var.VAR_NULL;
 
    public Var call() throws Exception {
+
+    System.out.println(
+    Var.valueOf("abc").getObjectAsString());
 
     try {
 
@@ -49,7 +52,8 @@ public static Var cadastrarOrdemServico(@ParamMetaData(description = "json_os") 
 
         cronapi.database.Operations.insert(Var.valueOf("app.entity.OrdemServico"),Var.valueOf("conteudo",
         cronapi.json.Operations.getJsonOrMapField(json_os,
-        Var.valueOf("conteudo"))),Var.valueOf("ano",
+        Var.valueOf("conteudo"))),Var.valueOf("situacao",
+        Var.valueOf("ativo")),Var.valueOf("ano",
         cronapi.json.Operations.getJsonOrMapField(json_os,
         Var.valueOf("ano"))),Var.valueOf("previsao_inicio",
         cronapi.json.Operations.getJsonOrMapField(json_os,
@@ -203,6 +207,39 @@ public static Var recuperarOrdemServicoById(@ParamMetaData(description = "id2") 
         Var.valueOf("Erro ao recuperar Ordem de Serviço!"));
      }
     return os;
+   }
+ }.call();
+}
+
+/**
+ *
+ * @return Var
+ */
+// Descreva esta função...
+public static Var teste() throws Exception {
+ return new Callable<Var>() {
+
+   private Var erro = Var.VAR_NULL;
+   private Var ret = Var.VAR_NULL;
+
+   public Var call() throws Exception {
+
+    try {
+
+        ret =
+        cronapi.json.Operations.toJson(
+        cronapi.util.Operations.getURLFromOthers(
+        Var.valueOf("POST"),
+        Var.valueOf("application/json"),
+        Var.valueOf("https://api.office-integrator.com/writer/officeapi/v1/document?apikey=cfb806fd8c168e2dfd702de4d6e9c64b"), Var.VAR_NULL, Var.VAR_NULL,
+        cronapi.map.Operations.createObjectMap()));
+     } catch (Exception erro_exception) {
+          erro = Var.valueOf(erro_exception);
+
+        cronapi.util.Operations.callClientFunction( Var.valueOf("cronapi.screen.notify"), Var.valueOf("success"),
+        Var.valueOf("Erro!"));
+     }
+    return ret;
    }
  }.call();
 }
