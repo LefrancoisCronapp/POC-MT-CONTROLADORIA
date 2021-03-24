@@ -1,0 +1,201 @@
+body, html {
+    background: #fdfafa !important;
+}
+
+.btn-ergon {
+    background: #851232;
+    color: #fff;
+}
+
+.btn-ergon:hover {
+    color: #fff;
+}
+
+.login-container {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    width: 100;
+}
+
+.form-column {
+    width: 30%;
+}
+
+.form-login {
+    margin-top: 25%;
+}
+
+.form-group-login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.form-group-login input {
+    width: 70%;
+}
+
+.image-column {
+    width: 70%;
+    height: 100%;
+    background-image: url("/img/fundo.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+.input-login {
+    display: block;
+    width: 100%;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 19px;
+    display: flex;
+    align-items: center;
+    color: #717171;
+}
+
+input.input-login {
+    -webkit-transition: all 0.4s;
+    -o-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    transition: all 0.4s;
+    padding: 10px 36px;
+}
+
+input.input-login:focus {
+    border-color: #85123285;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+.label-input-login {
+    display: flex;
+    position: absolute;
+    left: 5.5%;
+}
+
+.login-subtitle {
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 27px;
+    color: #717171;
+    text-align: center;
+    margin-top: 13%;
+    margin-bottom: 15%;
+}
+
+.line-links {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 70%;
+    margin-left: 15%;
+    margin-top: 8%;
+}
+
+.line-links button {
+    background: #114C85;
+    border-radius: 5px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    text-align: center;
+    border: none;
+    padding: 12px 35px;
+    color: white;
+    outline: none;
+}
+
+.line-links button:hover {
+    opacity: 0.8;
+    transition: 0.3s;
+}
+
+.line-links button:focus {
+    text-decoration: none;
+    border: none;
+    outline: none;
+}
+
+.line-links p {
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+    text-align: center;
+    cursor: pointer;
+    color: #717171;
+}
+
+.justify-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.register-text {
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+    color: #535F70;
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15%;
+}
+
+.register-link {
+    margin-left: 5px;
+    cursor: pointer;
+    color: #851232 !important;
+}
+
+@media only screen and (max-width: 1200px) {
+  .line-links {
+    flex-direction: column;
+  }
+
+  .line-links button {
+    margin-top: 5%;
+  }
+}
+
+@media only screen and (max-width: 830px) {
+  .image-column{
+    display: none;
+    width: 0%;
+    height: 0%;
+  }
+
+  .form-column {
+    width: 100%;
+  }
+
+  .label-input-login {
+    left: 17%;
+  }
+
+  .register-text {
+    margin-top: 10%;
+    margin-bottom: 5%;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .label-input-login {
+    left: 18%;
+  }
+}
