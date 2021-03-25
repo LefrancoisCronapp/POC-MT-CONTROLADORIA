@@ -1,57 +1,111 @@
-#main-view
-    {
+@import 'login.css';
+
+
+.ul-menu {
+    display: flex;
+    flex-direction: row;
+    decoration: none;
+    list-style-type: none;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.ul-menu li {
+    width: 23%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.ul-menu li:nth-last-child(4) {
+  margin-left: 3%;
+}
+
+.ul-menu li:nth-last-child(3) {
+  margin-left: 3%;
+}
+
+.ul-menu a:hover {
+  transition: 0.3s;
+  color: #006aff;
+}
+
+
+.ul-menu label, .ul-menu span {
+    color: #fff;
+}
+
+.ul-menu a {
+    height: 100%;
+    color: #fff;
+}
+
+.ul-menu a:hover {
+    transition: 0.3s;
+    color: #cecece;
+    text-decoration: none;
+}
+
+.row-form-group {
+    display: flex;
+    flex-direction: row;
+}
+
+.k-grid {
+    overflow: auto;
+}
+
+#static-frame {
+    display: flex;
+    align-items: center;
+}
+
+#static-frame span {
+    font-weight: bold;
+}
+
+#frame-selected-teams {
+    width: 50%;
+}
+
+#grid-select-teams {
+    width: 50%;
+}
+
+.form-equipes {
+    display: flex;
+    flex-direction: row;
+}
+
+.glyphicon-alert, .fa-exclamation {
+    color: #ff7474;
+}
+
+@media (max-width: 700px)
+{
+  .ul-menu {
+        flex-direction: column;
+    }
+    .ul-menu li {
         width: 100%;
-        box-shadow: none;
-        margin: 0;
-        background-color: #EEE;
-    }
-    
-    #main-view:focus, #main-nav-bar:focus
-    {
-        outline: none;
+        margin: 3%;
     }
 
-    .navbar
-    {
-        background-image: linear-gradient(to bottom, #4682B4, #B0C4DE);
-        min-height: 20px;
-        height: 30px;
-        padding: 5px 0px;
+    #frame-selected-teams {
+        width: 100%;
     }
 
-    .navbar input[type="text"]
-    {
-        height: 1.3vw;
+    #grid-select-teams {
+        width: 100%;
     }
 
-    .navbar li 
-    {
-        display: inline-block;
-        color: #FFF;
-        margin: 0;
-        font-size: 1vw;
+    .form-equipes {
+        display: flex;
+        flex-direction: column;
     }
+}
 
-    .navbar ul
-    {
-        padding-inline-start: 10px;
-        padding-inline-end: 10px;
-    }
-
-    .navbar li a, .navbar li span
-    {
-        color: #FFF;
-        font-size: 1vw;
-    } 
-
-    input[type="text"], input[type="password"], .k-dropdown-wrap, input[type="date"]
-    {
-        border: 1px solid #888;
-        border-radius: 5px;
-        height: calc(2.25rem + 2px);
-        padding-left: 5px;
-        font-size: 12px;
-        color: #888;
-    }
 
 

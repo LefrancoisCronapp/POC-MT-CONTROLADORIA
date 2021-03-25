@@ -93,6 +93,13 @@ window.blockly.js.blockly.LoggedHome.iniciarPagina = async function() {
   this.cronapi.screen.changeValueOfField('orgaos_selecionados', []);
   this.cronapi.screen.createScopeVariable('ordem_servico', this.cronapi.json.createObjectFromString(['{','\"id\": \"\", ','\"ano\": \"\", ','\"descricao\": \"\", ','\"data_inicio\": \"\", ','\"data_termino\": \"\", ','\"conteudo\": \"\", ','\"orgaos_selecionados\":  [], ','\"equipes_selecionadas\": [], ','\"equipe_responsavel\": \"\", ','\"anexos\": []','}'].join('')));
   this.cronapi.screen.changeValueOfField("vars.rb_tipo_conteudo", '1');
+  this.cronapi.util.callServerBlocklyAsynchronous('blockly.OrdemServico:teste', async function(sender_item) {
+      item = sender_item;
+    this.cronapi.screen.changeAttrValue("editor_api", 'src', this.cronapi.json.getProperty(item, 'document_url'));
+    this.cronapi.screen.changeAttrValue("link_editor_api", 'href', this.cronapi.json.getProperty(item, 'document_url'));
+    this.cronapi.screen.createScopeVariable('document_url', '');
+    this.cronapi.screen.changeValueOfField('document_url', this.cronapi.json.getProperty(item, 'document_url'));
+  }.bind(this));
   this.cronapi.screen.changeValueOfField("vars.busca_ano_final", '2021');
   this.cronapi.screen.changeValueOfField("vars.busca_situacao_final", 'ativo');
 }

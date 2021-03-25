@@ -108,6 +108,11 @@
         "field": "o.ordemServico.situacao",
         "func": "get",
         "type": "string"
+      },
+      {
+        "field": "o.equipe.id",
+        "func": "get",
+        "type": "string"
       }
     ],
     "type": "select"

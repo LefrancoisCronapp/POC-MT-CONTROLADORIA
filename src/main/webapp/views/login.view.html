@@ -1,151 +1,33 @@
 <style>
-    #top-title
-    {
-        color: #fff;
-    }
-    
-    h1
-    {
-        text-shadow: black 0.1em 0.1em 0.2em;
-        padding: 5px;
-    }
-    
-    #barra
-    {
-        display: inline-block;
-        width: 5px;
-        height: 28px;
-        background-color: #DAA520;
-        border-radius: 10px;
-        box-shadow: black 0.1em 0.1em 0.2em;
-    }
-    
-    .frame-login
-    {
-        width: 70vw;
-        margin: 7vh 15vw;
-        height: 70vh;
-        padding: 0;
-        border-radius: 10px;
-        box-shadow: 2px 2px 1px 1px #4682B4;
-    }
-    
-    .frame-login-title
-    {
-        width: 100%;
-        height: 30px;
-        background-image: linear-gradient(to bottom, #4682B4, #B0C4DE);
-        position: relative;
-        top: 0;
-        border-radius: 10px 10px 0 0;
-    }
-    
-    .frame-login-title h1
-    {
-        color: #FFF;
-        margin: 0;
-        font-size: 20px;
-    }
-    
-    #frame-total
-    {
-        width: 100%;
-        padding: 10px;
-    }
-    
-    #frame-image
-    {
-        width: 40%;
-        display: inline-block;
-        margin: 0;
-        float: left;
-        height: calc(70vh - 51px);
-        padding: 10px;
-        text-align: center;
-        border-right: 1px dashed #888;
-    }
-    
-    #frame-image img
-    {
-        position: relative;
-        top: 50%;
-        left: 50%;
-        margin-top: 82px;
-        margin-left: -121px;
-    }
-    
-    #frame-input
-    {
-        width: 60%;
-        display: inline-block;
-        margin: 0;
-        float: left;
-        height: calc(70vh - 51px);
-        padding: 81px 0;
-    }
-    
-    #frame-input h5
-    {
-        margin-left: 15px;
-    }
-</style><div class="bg"> 
-  <div class="container-full" data-container="true"> 
-    <div class="container-fluid" data-container="true"> 
-      <div class="row component-holder"> 
-        <div class="col-xs-12 col-sm-3 col-lg-4" data-container="true"></div> 
-        <h1 class="text-center title component-holder" xattr-position="h1 text-center" xattr-type="h1" data-component="crn-text-component" id="top-title"> S. C. I. 
-          <div id="barra"></div> Sistema de Controle Interno</h1> 
-        <div class="component-holder ng-binding ng-scope col-xs-12 col-sm-12 col-lg-12" data-component="crn-button" id="crn-button-846239"></div> 
-        <div class="col-xs-12 col-sm-3 col-lg-4" data-container="true"></div> 
-      </div> 
-    </div> 
-    <div class="col-xs-12 col-sm-6 col-lg-4 login-panel login-view frame-login" data-container="true" ng-init="cronapi.client('js.blockly.PublicLogin.iniciarPagina').run()"> 
-      <div class="frame-login-title"> 
-        <h1 class="text-center title component-holder" xattr-position="h1 text-center" xattr-type="h1" data-component="crn-text-component" id="top-title">Login</h1> 
-      </div> 
-      <form class="form-validation" autocomplete="off" name="form" ng-submit="" role="form"> 
-        <input type="hidden" name="csrf_token" value="CIwNZNlR4XbisJF39I8yWnWX9wX4WFoz"> 
-        <div class="text-danger wrapper text-center" ng-show="authError"></div> 
-        <div data-container="true" id="frame-total"> 
-          <div data-container="true" id="frame-image"> 
-                <div class="component-holder ng-binding ng-scope col-md-12" data-component="crn-image"><img alt="image" src="data:image/png;base64,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" class="center-block" xattr-position="center-block" data-component="crn-image" id="crn-image-449538"></div> 
-          </div> 
-          <div data-container="true" id="frame-input">
-            <h5><b>Por favor, efetue o login:</b></h5>
-            <div class="component-holder ng-binding ng-scope col-xs-12 col-md-12" data-component="crn-textinput"> 
-              <div class="form-group"> 
-                <label for="input7274">{{'Login.view.Username' | translate}}</label> 
-                <input type="text" mask="" mask-placeholder="" ng-required="false" ng-model="username.value" class="form-control k-textbox" id="input7274" placeholder="" autocomplete="username" autocorrect="off" autocapitalize="off"> 
-              </div> 
-            </div> 
-            <div class="component-holder ng-binding ng-scope col-xs-12 col-md-12" data-component="crn-textinput" id="crn-textinput-343947"> 
-              <div class="form-group"> 
-                <label for="input9836">{{'Login.view.Password' | translate}}</label> 
-                <input type="password" mask="" mask-placeholder="" ng-required="false" ng-model="password.value" class="form-control k-textbox" id="input9836" autocomplete="current-password" placeholder=""> 
-              </div> 
-            </div><div class="component-holder ng-binding ng-scope col-xs-12 col-md-12" data-component="crn-enterprise-checkbox" id="crn-enterprise-checkbox-434481"><div class="form-group"><input type="checkbox" id="vars.checkbox6948" ng-model="vars.cb_manterLogado" class="k-checkbox" ng-initial-value="false" crn-allow-null-values="false" ng-false-value="false" ng-true-value="true"><label class="k-checkbox-label" for="vars.checkbox6948">Mantenha-se conectado</label></div></div><div style="display: inline-block; width: auto;" class="component-holder col-xs-12 col-md-12" ng-model="vars.radio441" data-component="crn-radiogroup" id="crn-radiogroup-450591">
-    <div class="k-content" data-component="crn-radioOption">
-        <input style="display: inline-block;" class="k-radio" type="radio" crn-value="" value="1" name="optionsRadios" id="optionsRadios1crn-radiogroup-450591" ng-checked="">
-        <label class="k-radio-label" for="optionsRadios1crn-radiogroup-450591">Template 1</label>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+</style><div class="login-container">
+    <div class="form-column">
+        <form autocomplete="off" name="form" ng-submit="login()" role="form" class="form-login">
+            <input type="hidden" name="csrf_token" value="CIwNZNlR4XbisJF39I8yWnWX9wX4WFoz">
+            <div class="justify-logo">
+                <h1 style="text-align: center;">Sistema de Controle Interno</h1>
+            </div>
+            <p class="login-subtitle">Efetue Login</p>
+            <div class="form-group-login">
+                <input type="text" mask="" mask-placeholder="" ng-required="false" ng-model="username.value" class="form-control input-login" id="email" placeholder="Usuário" autocomplete="username" autocorrect="off" autocapitalize="off"> 
+                <span class="label-input-login">
+				    <img class="ico-user" src="img/user.svg">
+				</span>
+            </div>
+            <div class="form-group-login">
+                <input type="password" mask="" mask-placeholder="" ng-required="false" ng-model="password.value" class="form-control input-login" id="password" autocomplete="current-password" placeholder="Senha">
+                <span class="label-input-login">
+				    <img class="ico-user" src="img/fa-lock.svg">
+				</span>
+            </div>
+            
+            <div class="line-links">
+                <p></p>
+                <button type="submit">Login</button>
+            </div>
+        </form>
+        <div class="register-text"><div class="register-link"></div></div>
     </div>
-    <div class="k-content" data-component="crn-radioOption">
-        <input style="display: inline-block;" class="k-radio" type="radio" crn-value="" value="2" name="optionsRadios" id="optionsRadios2crn-radiogroup-450591" ng-checked="">
-        <label class="k-radio-label" for="optionsRadios2crn-radiogroup-450591">Template 2</label>
-    </div>
-</div> 
-            <div class="component-holder ng-binding ng-scope col-xs-12 col-md-12" data-component="crn-enterprise-checkbox" id="crn-enterprise-checkbox-889238"> 
-            </div> 
-            <div class="component-holder ng-binding ng-scope col-md-12" data-component="crn-button"> 
-              <div class="messages"> 
-                <div ng-show="message.error" class="help-block" data-container="true">
-                   {{message.error}} 
-                </div> 
-              </div> 
-              <button role="button" aria-label="{{'Login.view.Login' | translate}}" class="btn btn-default col-md-12 col-xs-12 k-button btn-primary" type="" ng-disabled="form.$invalid || vm.dataLoading" ng-click="cronapi.client('js.blockly.PublicLogin.login').run(username.value, password.value, vars.cb_manterLogado)" xattr-size="" xattr-fullsize="" xattr-theme="btn-default" xattr-disabled="" data-component="crn-button"> <span>{{"Login.view.Login" | translate}} </span> </button> 
-            </div> 
-          </div> 
-        </div> 
-      </form> 
-    </div> 
-  </div> 
+    <div class="image-column"></div>
 </div>
