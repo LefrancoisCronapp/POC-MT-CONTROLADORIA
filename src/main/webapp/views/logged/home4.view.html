@@ -1,8 +1,11 @@
 <style>
-    #modalImpressao .modal-content
+    .navbar-default
     {
-        width: 80vw;
-        margin: auto -17vw;
+        outline: none;
+    }
+    .ul-menu
+    {
+        outline: none;
     }
     
     label
@@ -114,8 +117,17 @@
       <li class="form-group row-form-group"> <img src="img/logo_mt.png" alt="Logo Controladoria Mato Grosso"> </li> 
       <li class="form-group row-form-group"> </li> 
       <li> <span>Usuário: {{session.user.name}}</span> </li> 
-      <li> <a ng-click="cronapi.callFunction('cronapi.screen.showModal').call('modalPassword')"> <span>Editar a Senha</span> </a> </li> 
-      <li> <a ng-click="cronapi.callFunction('cronapi.screen.logout').call()"> <span>Logout</span> </a> </li> 
+      <!--<li> <a ng-click="cronapi.callFunction('cronapi.screen.showModal').call('modalPassword')"> <span>Editar a Senha</span> </a> </li> 
+      <li> <a ng-click="cronapi.callFunction('cronapi.screen.logout').call()"> <span>Logout</span> </a> </li>-->
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Perfil
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a style="color: #888;" class="dropdown-item" ng-click="cronapi.callFunction('cronapi.screen.showModal').call('modalPassword')"> <span>Editar a Senha</span> </a>
+          <a style="color: #888;" class="dropdown-item" ng-click="cronapi.callFunction('cronapi.screen.logout').call()"> <span>Logout</span> </a>
+        </div>
+      </li>
     </ul> 
   </nav> 
 </div><div ui-view="" id="main-view" tabindex="-1" role="main" class="container-fluid main-view main-view-horizontal"> 
@@ -265,14 +277,14 @@
                     </div> 
                     <div id="frame-selected-teams" data-conatiner="true"> 
                       <div data-container="true" id="table-cabeca"> 
-                        <h1 id="label_responsavel" class="text-center component-holder" xattr-position="h1 text-center" xattr-type="h1">Equipes Escolhidas</h1> 
+                        <h1 id="label_equipes" class="text-center component-holder" xattr-position="h1 text-center" xattr-type="h1">Equipes Escolhidas</h1> 
                       </div> 
                       <!--<div style="width: 100%; background-color: green;" crn-datasource="EQUIPES_SLECIONADAS" data-component="crn-list" class="component-holder" id="crn-list-524240" ng-repeat="rowData in datasource.data"><input type="checkbox" value="{{rowData.id}}" id="{{rowData.id}}"><label class="k-checkbox-label" for="{{rowData.id}}">{{rowData.nome}}</label></div>--> 
                       <table class="table table-hover"> 
                         <thead class="k-grid-header"> 
                           <tr> 
                             <th style="height: 50px; text-align: center;" class="k-header" scope="col">Equipe</th> 
-                            <th style="height: 50px; text-align: center;" class="k-header" scope="col">Responsável</th> 
+                            <th style="height: 50px; text-align: center;" class="k-header" id="label_responsavel" scope="col">Responsável</th> 
                           </tr> 
                         </thead> 
                         <tbody> 
@@ -333,10 +345,8 @@
   <div class="modal-dialog"> 
     <div class="modal-content"> 
       <div class="modal-header"> 
-        <button type="button" class="close" data-dismiss="modal" aria-label="{{'Home.view.Close' | translate}}"></button> 
-        <div style="margin-right: 5px; margin-bottom: 5px;" class="component-holder ng-scope" data-component="crn-button" id="crn-button-65641" align="right"> 
-            <button class="btn k-button crnCSS-default btn-danger" ng-click="cronapi.callFunction('cronapi.screen.hideModal').call('modalPassword')" xattr-fullsize="" xattr-theme="btn-danger" xattr-disabled=""><i class="glyphicon glyphicon-remove"></i> <span></span></button> 
-          </div><h2 class="modal-title">{{"Home.view.ChangePassword" | translate}}</h2> 
+        <button type="button" class="close" data-dismiss="modal" aria-label="{{'Home.view.Close' | translate}}"><span aria-hidden="true">×</span></button> 
+        <h2 class="modal-title">{{"Home.view.ChangePassword" | translate}}</h2> 
       </div> 
       <div class="modal-body"> 
         <form class="form-validation" autocomplete="off" name="form" role="form"> 

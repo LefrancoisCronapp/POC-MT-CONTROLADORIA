@@ -8,7 +8,7 @@ window.blockly.js.blockly.LoggedHome = window.blockly.js.blockly.LoggedHome || {
  */
 window.blockly.js.blockly.LoggedHome.validarArgs = [];
 window.blockly.js.blockly.LoggedHome.validar = async function() {
- var item;
+ var valida_equipes, valida_dados, validar_orgaos;
   valida_dados = true;
   validar_orgaos = true;
   valida_equipes = true;
@@ -63,17 +63,17 @@ window.blockly.js.blockly.LoggedHome.validar = async function() {
   }
   if (this.cronapi.json.getProperty(this.cronapi.screen.getScopeVariable("ordem_servico"), 'equipes_selecionadas').length == 0) {
     this.cronapi.screen.changeContent("tab_equipes", '<i class=\"glyphicon glyphicon-alert\"></i> Equipes.', 'false');
-    this.cronapi.screen.changeContent("label_equipes", 'Equipes Escolhidas <i data-toggle=\"tooltip\" data-placement=\"right\" title=\"Vincule pelo menos uma equipe a uma Ordem de Serviço.\" class=\"fa fa-exclamation\"></i>\n', 'false');
+    this.cronapi.screen.changeContent("label_equipes", 'Equipes Disponíveis <i data-toggle=\"tooltip\" data-placement=\"right\" title=\"Vincule pelo menos uma equipe a uma Ordem de Serviço.\" class=\"fa fa-exclamation\"></i>\n', 'false');
     valida_equipes = false;
   } else {
-    this.cronapi.screen.changeContent("label_equipes", 'Equipes Escolhidas\n', 'false');
+    this.cronapi.screen.changeContent("label_equipes", 'Equipes Disponíveis', 'false');
   }
   if (this.cronapi.logic.isNullOrEmpty(this.cronapi.json.getProperty(this.cronapi.screen.getScopeVariable("ordem_servico"), 'equipe_responsavel'))) {
     this.cronapi.screen.changeContent("tab_equipes", '<i class=\"glyphicon glyphicon-alert\"></i> Equipes.', 'false');
-    this.cronapi.screen.changeContent("label_responsavel", 'Responsável <i data-toggle=\"tooltip\" data-placement=\"right\" title=\"É necessário escolher a equipe responsável pela Ordem de Serviço.\" class=\"fa fa-exclamation\"></i>\n', 'false');
+    this.cronapi.screen.changeContent("label_responsavel", 'Equipes Escolhidas <i data-toggle=\"tooltip\" data-placement=\"right\" title=\"É necessário escolher a equipe responsável pela Ordem de Serviço.\" class=\"fa fa-exclamation\"></i>\n', 'false');
     valida_equipes = false;
   } else {
-    this.cronapi.screen.changeContent("label_responsavel", 'Responsável', 'false');
+    this.cronapi.screen.changeContent("label_responsavel", 'Equipes Escolhidas', 'false');
   }
   if (valida_equipes) {
     this.cronapi.screen.changeContent("tab_equipes", 'Equipes.', 'false');
@@ -88,18 +88,11 @@ window.blockly.js.blockly.LoggedHome.validar = async function() {
  */
 window.blockly.js.blockly.LoggedHome.iniciarPaginaArgs = [];
 window.blockly.js.blockly.LoggedHome.iniciarPagina = async function() {
- var item;
+ var valida_equipes, valida_dados, validar_orgaos;
   this.cronapi.screen.createScopeVariable('orgaos_selecionados', '');
   this.cronapi.screen.changeValueOfField('orgaos_selecionados', []);
   this.cronapi.screen.createScopeVariable('ordem_servico', this.cronapi.json.createObjectFromString(['{','\"id\": \"\", ','\"ano\": \"\", ','\"descricao\": \"\", ','\"data_inicio\": \"\", ','\"data_termino\": \"\", ','\"conteudo\": \"\", ','\"orgaos_selecionados\":  [], ','\"equipes_selecionadas\": [], ','\"equipe_responsavel\": \"\", ','\"anexos\": []','}'].join('')));
   this.cronapi.screen.changeValueOfField("vars.rb_tipo_conteudo", '1');
-  this.cronapi.util.callServerBlocklyAsynchronous('blockly.OrdemServico:teste', async function(sender_item) {
-      item = sender_item;
-    this.cronapi.screen.changeAttrValue("editor_api", 'src', this.cronapi.json.getProperty(item, 'document_url'));
-    this.cronapi.screen.changeAttrValue("link_editor_api", 'href', this.cronapi.json.getProperty(item, 'document_url'));
-    this.cronapi.screen.createScopeVariable('document_url', '');
-    this.cronapi.screen.changeValueOfField('document_url', this.cronapi.json.getProperty(item, 'document_url'));
-  }.bind(this));
   this.cronapi.screen.changeValueOfField("vars.busca_ano_final", '2021');
   this.cronapi.screen.changeValueOfField("vars.busca_situacao_final", 'ativo');
 }
@@ -109,7 +102,7 @@ window.blockly.js.blockly.LoggedHome.iniciarPagina = async function() {
  */
 window.blockly.js.blockly.LoggedHome.abrirPainelFiltrosArgs = [];
 window.blockly.js.blockly.LoggedHome.abrirPainelFiltros = async function() {
- var item;
+ var valida_equipes, valida_dados, validar_orgaos;
   this.cronapi.screen.hideComponent("open-icon");
   this.cronapi.screen.showComponent("dynamic-frame");
   this.cronapi.screen.showComponent("close-icon");
@@ -123,7 +116,7 @@ window.blockly.js.blockly.LoggedHome.abrirPainelFiltros = async function() {
  */
 window.blockly.js.blockly.LoggedHome.fecharPainelFiltrosArgs = [];
 window.blockly.js.blockly.LoggedHome.fecharPainelFiltros = async function() {
- var item;
+ var valida_equipes, valida_dados, validar_orgaos;
   this.cronapi.screen.hideComponent("close-icon");
   this.cronapi.screen.hideComponent("dynamic-frame");
   this.cronapi.screen.hideComponent("frame-action");
@@ -137,7 +130,7 @@ window.blockly.js.blockly.LoggedHome.fecharPainelFiltros = async function() {
  */
 window.blockly.js.blockly.LoggedHome.alterarValorOSArgs = ['key', 'value'];
 window.blockly.js.blockly.LoggedHome.alterarValorOS = async function(key, value) {
-
+ var valida_equipes;
   json_os = this.cronapi.screen.getScopeVariable("ordem_servico");
   if (key == 'orgaos_selecionados') {
     lista_orgaos = this.cronapi.json.getProperty(json_os, 'orgaos_selecionados');
@@ -233,7 +226,7 @@ window.blockly.js.blockly.LoggedHome.alterarValorOS = async function(key, value)
  */
 window.blockly.js.blockly.LoggedHome.cadastrarOrdemServicoArgs = [];
 window.blockly.js.blockly.LoggedHome.cadastrarOrdemServico = async function() {
- var item;
+ var valida_equipes, valida_dados, validar_orgaos;
   if (await this.blockly.js.blockly.LoggedHome.validar()) {
     resp = await this.cronapi.util.callServerBlockly('blockly.OrdemServico:cadastrarOrdemServico', this.cronapi.screen.getScopeVariable("ordem_servico"));
     if (resp) {
@@ -251,7 +244,7 @@ window.blockly.js.blockly.LoggedHome.cadastrarOrdemServico = async function() {
  */
 window.blockly.js.blockly.LoggedHome.filtrarOrdemServicosArgs = [];
 window.blockly.js.blockly.LoggedHome.filtrarOrdemServicos = async function() {
- var item;
+ var valida_equipes, valida_dados, validar_orgaos;
   this.cronapi.screen.changeValueOfField("vars.busca_ano_final", this.cronapi.screen.getValueOfField("vars.busca_ano"));
   this.cronapi.screen.changeValueOfField("vars.busca_equipe_final", this.cronapi.screen.getValueOfField("vars.busca_equipe"));
   this.cronapi.screen.changeValueOfField("vars.busca_numeroOs_final", this.cronapi.screen.getValueOfField("vars.busca_numeroOS"));
@@ -263,7 +256,7 @@ window.blockly.js.blockly.LoggedHome.filtrarOrdemServicos = async function() {
  */
 window.blockly.js.blockly.LoggedHome.limparFiltrosArgs = [];
 window.blockly.js.blockly.LoggedHome.limparFiltros = async function() {
- var item;
+ var valida_equipes, valida_dados, validar_orgaos;
   this.cronapi.screen.changeValueOfField("vars.busca_ano", '');
   this.cronapi.screen.changeValueOfField("vars.busca_ano_final", '2021');
   this.cronapi.screen.changeValueOfField("vars.busca_equipe", '');
@@ -279,7 +272,7 @@ window.blockly.js.blockly.LoggedHome.limparFiltros = async function() {
  */
 window.blockly.js.blockly.LoggedHome.abrirModalImpressaoArgs = [];
 window.blockly.js.blockly.LoggedHome.abrirModalImpressao = async function() {
- var item;
+ var valida_equipes, valida_dados, validar_orgaos;
   os = await this.cronapi.util.callServerBlockly('blockly.OrdemServico:recuperarOrdemServicoById', this.cronapi.screen.getValueOfField("GerenciadorDeUsuarios.active.ordemServico_id"));
   if (this.cronapi.json.getProperty(os, 'conteudo').indexOf('<!DOCTYPE html>') + 1 > 0) {
     this.cronapi.screen.changeValueOfField("vars.conteudo_impressao", this.cronapi.json.getProperty(os, 'conteudo'));
@@ -294,7 +287,7 @@ window.blockly.js.blockly.LoggedHome.abrirModalImpressao = async function() {
  */
 window.blockly.js.blockly.LoggedHome.abrirModalVisualizarOSArgs = [];
 window.blockly.js.blockly.LoggedHome.abrirModalVisualizarOS = async function() {
- var item;
+ var valida_equipes, valida_dados, validar_orgaos;
   os = await this.cronapi.util.callServerBlockly('blockly.OrdemServico:recuperarOrdemServicoById', this.cronapi.screen.getValueOfField("GerenciadorDeUsuarios.active.ordemServico_id"));
   this.cronapi.screen.changeContent("info-ano", String('<b>Ano: </b>') + String(this.cronapi.json.getProperty(os, 'ano')), 'false');
   this.cronapi.screen.changeContent("info-idOS", String('<b>Número O.S.: </b>') + String(this.cronapi.json.getProperty(os, 'id')), 'false');
@@ -322,7 +315,7 @@ window.blockly.js.blockly.LoggedHome.abrirModalVisualizarOS = async function() {
  */
 window.blockly.js.blockly.LoggedHome.buscaOrgaoArgs = ['value'];
 window.blockly.js.blockly.LoggedHome.buscaOrgao = async function(value) {
-
+ var valida_equipes, valida_dados;
   json_os = this.cronapi.screen.getValueOfField("orgaos_selecionados");
   flag = false;
   if (json_os.length > 0) {
